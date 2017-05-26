@@ -31,7 +31,12 @@ void mthread_create(
     void (*fn_addr)(void *), void *fn_arg,
     void *sk_addr, size_t sk_size);
 
-void mthread_register(const ucontext_t *uc);
+void mthread_build(
+    mthread_t *ctx,
+    mthread_t *_old_ctx,
+    void (*fn_addr)(void *), void *fn_arg,
+    void *sk_addr, size_t sk_size);
 
+void mthread_register(const ucontext_t *uc);
 void mthread_schedule_loop(void);
 #endif

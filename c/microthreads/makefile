@@ -11,5 +11,4 @@ main: $(OBJ)
 	$(CC) $(CFLAGS) -E $< -o $@
 clean:
 	$(RM) $(OBJ) main.bin *.e
-	echo $(APP_PATH)
 precompile: $(PSRCS)
