@@ -1,0 +1,15 @@
+{
+  "name": "js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "nyc --reporter=html --reporter=text mocha ./two-phase-commit-es5.test.js --opts .mocharc"
+  },
+  "devDependencies": {
+    "co-mocha": "^1.2.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.3"
+  }
+}

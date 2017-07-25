@@ -2,3 +2,4 @@
 *.e
 .DS_Store
 *.bin
+js/node_modules
