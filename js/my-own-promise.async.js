@@ -37,8 +37,8 @@ function MyOwnPromise( executor ) {
   }
 
   ctx.then = function(onFulfilled, onRejected) {
-    onFulfilled = (typeof onFulfilled === 'function') ? onFulfilled : function (val) {  };
-    onRejected = (typeof onRejected === 'function') ? onRejected: function (val) {  };
+    onFulfilled = (typeof onFulfilled === 'function') ? onFulfilled : function (val) { return val };
+    onRejected = (typeof onRejected === 'function') ? onRejected: function (reason) { throw reason };
     if (ctx.state === 'fulfilled') {
       return new MyOwnPromise(function (resolver, rejecter) {
         try {
@@ -60,19 +60,21 @@ function MyOwnPromise( executor ) {
       });
     }
     if (ctx.state === 'pending') {
-      ctx._fulfilled_handlers.push(function (val) {
-        try {
-          onFulfilled(val);
-        } catch(err) {
-          onRejected(err);
-        }
-      });
-      ctx._rejected_handlers.push(function (val) {
-        try {
-          onRejected(val);
-        } catch(err) {
-          onRejected(err);
-        }
+      return new MyOwnPromise(function (resolver, rejecter) {
+        ctx._fulfilled_handlers.push(function (val) {
+          try {
+            onFulfilled(val);
+          } catch(err) {
+            onRejected(err);
+          }
+        });
+        ctx._rejected_handlers.push(function (val) {
+          try {
+            onRejected(val);
+          } catch(err) {
+            onRejected(err);
+          }
+        });
       });
     }
   }
@@ -96,5 +98,6 @@ let a = new MyOwnPromise((resolve, reject) => {
     resolve(data);
   });
 }).then(e => {
-  console.log('a', e);
+  console.log('inspect e', Object.prototype.toString.call(e));
+  console.log('a');
 });
