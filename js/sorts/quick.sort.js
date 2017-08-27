@@ -20,7 +20,8 @@ function partition(arr, l, r, p) {
   swap(arr, p, r);
   let lt = l, i = l;
   while (i <= r-1) {
-    if (arr[i] <= pivot) swap(arr, lt++, i);
+    if (arr[i] <= pivot)
+      swap(arr, lt++, i);
     i++;
   }
   swap(arr, lt, r);
