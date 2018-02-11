@@ -5,3 +5,4 @@
 js/node_modules
 js/.nyc_output
 js/coverage
+*.rsc
