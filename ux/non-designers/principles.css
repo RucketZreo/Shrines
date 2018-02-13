@@ -1,0 +1,61 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: #b7a497ad;
+}
+.article .title,
+.article .content {
+    text-align: center;
+    align-items: center;
+}
+
+.article .content {
+    flex: 1;
+    display: flex;
+}
+
+.article .italic {
+    font-style: italic;
+}
+
+.article .title {
+    color: #fff;
+    background-color: #000;
+    align-self: center;
+    width: 50rem;
+}
+
+.article .content p {
+    flex: 1;
+    font-size: 4rem;
+}
+
+.article hr {
+    border: none;
+    background: #000;
+    width: 100%;
+    height: .15rem;
+    align-self: center;
+    width: 50rem;
+}
+
+.article .footer {
+    border: none;
+    background: #000;
+    width: 100%;
+    height: .5rem;
+    align-self: center;
+    width: 50rem;
+}
